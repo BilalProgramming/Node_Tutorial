@@ -1,0 +1,31 @@
+{
+  "name": "node-js-tut",
+  "version": "1.0.0",
+  "description": "a node js tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BilalProgramming/Node_Tutorial.git"
+  },
+  "keywords": [
+    "I",
+    "learn",
+    "node",
+    "js"
+  ],
+  "author": "Bilal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BilalProgramming/Node_Tutorial/issues"
+  },
+  "homepage": "https://github.com/BilalProgramming/Node_Tutorial#readme",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "cli-color": "^2.0.4",
+    "colors": "^1.4.0",
+    "simple-logs": "^0.2.11"
+  }
+}

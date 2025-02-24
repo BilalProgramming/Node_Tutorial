@@ -42,13 +42,20 @@
 // console.log(__filename)       
 
 //================  Make server in node js==================
-    // http is module which handle request and response of server
- const http=require('http')
+    
+//  const http=require('http')  // http is module which handle request and response of server
   
- http.createServer( (req,resp)=>{
-  resp.write("Hi Bilal.......")
-  resp.end()
- }
- ).listen(1000)
+//  http.createServer( (req,resp)=>{
+//   resp.write("Hi Bilal.......")
+//   resp.end()
+//  }
+//  ).listen(1000)
 
- 
+
+   //===== used packages
+  
+// const color=require('colors')
+// console.log("package.json".green)
+import chalk from 'chalk';
+
+console.log(chalk.red('Hello world!'));
