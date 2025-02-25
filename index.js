@@ -54,8 +54,42 @@
 
    //===== used packages
   
-// const color=require('colors')
+// import color from'colors'
 // console.log("package.json".green)
-import chalk from 'chalk';
+  
+// import chalk from 'chalk';
+// console.log(chalk.red('Hello world!'));
+// console.log("Node js tutorial...")
+    
 
-console.log(chalk.red('Hello world!'));
+//================= Make API============================================
+//  const http=require('http') // http is mudule 
+//  const data=require('./data')
+//  http.createServer((req,resp)=>{
+//   resp.writeHead(200,{'Content-Type':'application\json'})// header also tell data is json formal
+//   resp.write(JSON.stringify( data))//body
+//   resp.end()
+
+//  }).listen(2000)
+
+
+
+//====================  take input from command line====================
+// process is an object
+const fs=require("fs")
+ const input=process.argv
+ if (input[2]=='add'){
+  fs.writeFileSync(input[3],input[4])
+
+ }else if(input[2]=='remove'){
+  fs.unlinkSync(input[3])
+
+ }else{
+  console.log("Invalid")
+ }
+
+//  (2)add (3) file_name (4)content
+
+
+
+ 
