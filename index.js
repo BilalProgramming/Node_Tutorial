@@ -76,19 +76,70 @@
 
 //====================  take input from command line====================
 // process is an object
-const fs=require("fs")
- const input=process.argv
- if (input[2]=='add'){
-  fs.writeFileSync(input[3],input[4])
+// const fs=require("fs")
+//  const input=process.argv
+//  if (input[2]=='add'){
+//   fs.writeFileSync(input[3],input[4])
 
- }else if(input[2]=='remove'){
-  fs.unlinkSync(input[3])
+//  }else if(input[2]=='remove'){
+//   fs.unlinkSync(input[3])
 
- }else{
-  console.log("Invalid")
- }
+//  }
+//  else{
+//   console.log("Invalid input")
+//  }
 
-//  (2)add (3) file_name (4)content
+
+// ======display file list from folder=======================
+// const fs=require("fs")
+// const path=require('path')
+// const pathDir=path.join(__dirname,'folder')
+// for(i=0;i<5;i++){
+//   fs.writeFileSync(pathDir+"/bilal"+i+".txt",'Hi Bilal, what are you doing')
+
+// }
+
+
+//==========   display all files of folder=======
+// fs.readdir(pathDir,(error,files)=>{
+//   files.forEach((data)=>{
+//     console.log(data)
+
+//   })
+  
+
+// })
+  //==================crud operation on file=================
+// const fs=require("fs")  
+// const path=require("path")
+// const pathDir=path.join(__dirname,'crud')
+// const filePath=`${pathDir}/bilal.txt`
+// fs.writeFileSync(filePath,"I am cs student with specializzation in AI.....") // ===create file within folder====
+
+
+// fs.readFile(filePath,'utf8',(error,data)=>{  // ====read file====
+//   console.log(data)
+// })
+
+
+// fs.appendFile(filePath,'and i am part time teacher',(err)=>{ // ======  modified(append)  files
+//   if(!err){
+//     console.log('file is updated')
+//   }
+//  }
+//  )
+
+
+// fs.rename(filePath,`${pathDir}/hi.txt`,(err)=>{ //========rename file
+//   if(!err){
+//     console.log("file is renamed")
+//   }
+// })
+
+
+//===== delete file
+// fs.unlinkSync(`${pathDir}/hi.txt`)
+
 
 
 
