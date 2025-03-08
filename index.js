@@ -280,6 +280,8 @@
 // })
 // app.listen(200)
 
+
+
 // ==middleware=== is used with routes,through this we can access request,response and modify them
  // it is used for authenication
 
@@ -311,6 +313,8 @@
 // })
 
 // app.listen(300)
+
+ //======route level middleware========
 
 const express=require("express")
 const app=express()
