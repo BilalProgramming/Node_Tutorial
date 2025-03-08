@@ -139,8 +139,200 @@
 
 //===== delete file
 // fs.unlinkSync(`${pathDir}/hi.txt`)
+// a=10
+// b=0
+// console.log("hi")
+
+//========== draw back of asynchronous language======
+// a=10
+// b=0
+// setTimeout(()=>{
+//   b=10
+// },2000) 
+// console.log(a+b) 
+
+//===  resolve above problems usin promise==========
+
+// a=10
+// b=0
+// let waitingData=new Promise((resolve,reject)=>{
+//   setTimeout(()=>{
+//     resolve(30)
+//   },2000)
+// })
+//  waitingData.then((data)=>{
+// b=data
+// console.log(a+b) })
 
 
-
-
+//============ express  js ( make web pages using express)===============
+// const express=require("express")
+// const app=express() // make it executable state
+//  //  route page
+// app.get('',(req,resp)=>{   // get is method which   provides routes
+//   console.log("data sent by browser",req.query.name)
+//   resp.send("Welcome "+  req.query.name)
  
+  
+// })  
+
+// // contact page
+// app.get('/contact',(req,resp)=>{
+//   resp.send("<h2> Welcome user Contact Page</h2><br><p>Contact:03112061159</p>")
+  
+// })
+
+// // about page
+// app.get("/About",(req,resp)=>{
+//   resp.send("<h1>About Us</h1><br><p>My name Is Bilal . I am web developer with cs degree and specialization in AI</p>")
+// })
+
+// app.listen(200)
+
+
+// //=== render html and json================
+// const express=require("express")
+// const app=express()
+// app.get('',(req,resp)=>{
+//   resp.send(`
+//     <h1>Welcome To home Page</h1><br>
+//     <input type="text" placeholder="userName"value=${req.query.name} /><br>
+//     <button>Submit</button><br><br>
+//     <a href="/about">Go to About us page </a> <br>
+//     <a href="./details">Go To details page</a>
+//    ` )})
+
+// app.get('/about',(req,resp)=>{
+//   resp.send(`
+//     <h2>Welcome To About us Page</h2>
+//       <a href="/">Go to Home us page </a> <br>
+//     <a href="./details">Go To details page</a>
+//     `
+//   )
+// })  
+// app.listen(200)
+
+// app.get("/details",(req,resp)=>{
+//   resp.send( [
+//     {
+//     name:"Bilal",
+//     email:"Bilal123@gmail.com"
+//   },
+//   {
+//     name:"usman",
+//     email:"usman123@gmail.com"
+//   }
+// ])})
+
+//==  Make first html page 
+// const express=require("express")
+// const path=require("path")
+// const app=express()
+ 
+// const publicPath=path.join(__dirname,'public')
+
+// app.use(express.static(publicPath))// function of express(middleware)
+// app.listen(4000)
+
+//============ Remove extension and make 4040 page=========
+
+// const express=require("express")
+// const path=require("path")
+// const app=express()
+
+// const publicPath=path.join(__dirname,'public')
+// app.get('',(_,resp)=>{
+//   resp.sendFile(`${publicPath}/index.html`)
+
+// })
+
+// app.get('/about',(req,resp)=>{
+//   resp.sendFile(`${publicPath}/about.html`)
+// })
+
+// app.get("/Contact",(req,resp)=>{
+//   resp.sendFile(`${publicPath}/contact.html`)
+// })
+// app.get('*',(req,resp)=>{
+//   resp.sendFile(`${publicPath}/nopage.html`)
+// })
+// app.listen(5000)
+
+  
+//=========  template engine is used for dynamic page====
+// const express=require("express")
+// const app=express()
+
+// // used ejs template engine
+// app.set('view engine','ejs') 
+
+// app.get("/profile",(req,resp)=>{
+//   const user={
+//     name:"Bilal",
+//     email:"bil@l123",
+//     profession:"web developer",
+//     skills:["c/C++","Python","js","Node js","oracle","mongo"]
+//   }
+//   resp.render('profile',{user}) 
+// })
+// app.get("/login",(req,resp)=>{
+//   resp.render('login')
+// })
+// app.listen(200)
+
+// ==middleware=== is used with routes,through this we can access request,response and modify them
+ // it is used for authenication
+
+// const express=require("express")
+// const app=express() 
+// // make middleware func
+// const reqFilter=(req,resp,next)=>{
+//    if(!req.query.age){
+//     resp.send("<h2>Please provide age</h2>")
+
+//    }
+//   else if(req.query.age<18){
+//     resp.send(" <h2>You cannot acces this page</h2>")
+//   }
+//   else{
+//     next()
+//   }
+
+// }
+// app.use(reqFilter) // apply middleware globally called application level middleware
+
+// app.get("/",(req,resp)=>{
+//   resp.send("<h2>Welcome to home page</h2> ")
+
+// })
+
+// app.get("/profile",(req,resp)=>{
+//   resp.send("<h2>Profile Page</h2>")
+// })
+
+// app.listen(300)
+
+const express=require("express")
+const app=express()
+const reqFilter=require("./middleware")
+
+const route=express.Router()
+
+route.use(reqFilter)
+
+
+route.get("/",(req,resp)=>{
+  resp.send("<h2>Welcome to Home page</h2>")
+})
+
+app.get("/about",(req,resp)=>{
+  resp.send("<h2>About us page</h2>")
+})
+
+route.get("/contact",(req,resp)=>{
+  resp.send("<h2>contact page</h2>")
+})
+app.use('/',route)
+app.listen(300)
+
+

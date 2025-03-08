@@ -5,4 +5,4 @@ data=[
     {name:"Arqam shaikh",email:"arqam987@gmail.com",age:20, profession:"Graphic designer"} 
 ]
 module.exports=data
-   
+console.log(__dirname)   
