@@ -316,27 +316,57 @@
 
  //======route level middleware========
 
-const express=require("express")
-const app=express()
-const reqFilter=require("./middleware")
+// const express=require("express")
+// const app=express()
+// const reqFilter=require("./middleware")
 
-const route=express.Router()
+// const route=express.Router()
 
-route.use(reqFilter)
+// route.use(reqFilter)
 
 
-route.get("/",(req,resp)=>{
-  resp.send("<h2>Welcome to Home page</h2>")
-})
+// route.get("/",(req,resp)=>{
+//   resp.send("<h2>Welcome to Home page</h2>")
+// })
 
-app.get("/about",(req,resp)=>{
-  resp.send("<h2>About us page</h2>")
-})
+// app.get("/about",(req,resp)=>{
+//   resp.send("<h2>About us page</h2>")
+// })
 
-route.get("/contact",(req,resp)=>{
-  resp.send("<h2>contact page</h2>")
-})
-app.use('/',route)
-app.listen(300)
+// route.get("/contact",(req,resp)=>{
+//   resp.send("<h2>contact page</h2>")
+// })
+// app.use('/',route)
+// app.listen(300)
 
+//=============== connect Node with Mongo===============
+// const {MongoClient}=require("mongodb")
+// const url='mongodb://localhost:27017' // works only for local
+// const client= new MongoClient(url) 
+// const database='Google'
+
+// async function getData(){
+//   let result=await client.connect() // client return promise. and e await keyword is used to pause the execution of an asynchronous function until a Promise is resolved or rejected.
+//   let db= result.db( database) // databse name
+//  let collection= db.collection('Emp')  //collection name
+//  let response=await collection.find().toArray()
+//  console.log(response)
+// }
+
+// getData()
+
+const {MongoClient}=require("mongodb")
+const url='mongodb://localhost:27017'
+const client=new MongoClient(url)
+const database='Google'
+
+async function getData(){
+  let connect=await client.connect()
+   let db= connect.db(database )
+   let collection=db.collection('Dept')
+   let response=await collection.find().toArray()
+   console.log(response )
+
+}
+getData()
 
