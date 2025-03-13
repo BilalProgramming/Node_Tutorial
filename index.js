@@ -355,18 +355,23 @@
 
 // getData()
 
-const {MongoClient}=require("mongodb")
-const url='mongodb://localhost:27017'
-const client=new MongoClient(url)
-const database='Google'
+  
+// db conncect with separate files
+const dbConect=require("./mongodb")
+//handle promise
+// dbConect().then((resp)=>{
+//   console.log(resp.find().toArray().then((data)=>{
+//     console.log(data)
+//   }))
 
-async function getData(){
-  let connect=await client.connect()
-   let db= connect.db(database )
-   let collection=db.collection('Dept')
-   let response=await collection.find().toArray()
-   console.log(response )
+// })
 
-}
-getData()
+//async await for promise handling
+// const getdata=async ()=>{
+//   let data=await dbConect()
+//   let resp=await data.find().toArray()
+//   console.log(resp)
+
+// }
+// getdata()
 
