@@ -6,7 +6,7 @@ const database='Google'
 async function dbConect(){
   let connect=await client.connect()
    let db= connect.db(database )
-   return db.collection('StudentsInfo')
+   return db.collection("User")
 
 
 }
