@@ -357,7 +357,7 @@
 
   
 // db conncect with separate files
-const dbConect=require("./mongodb")
+//const dbConect=require("./mongodb")
 //handle promise
 // dbConect().then((resp)=>{
 //   console.log(resp.find().toArray().then((data)=>{
@@ -375,3 +375,91 @@ const dbConect=require("./mongodb")
 // }
 // getdata()
 
+  // connect node with mongo using Mongoose(is a package which connect node with mongo db)
+
+// const mongoose=require("mongoose")
+// const main=async ()=>{
+//  await mongoose.connect("mongodb://localhost:27017/Google")//url 
+
+//  const productSchema= new mongoose.Schema({//schema of table
+//   deptName:String,
+//   ename:String
+//  },
+//  {collection:"Dept"}
+// );
+//  const productModel= mongoose.model("Dept",productSchema)// by default convet Dept into plural
+//  let data=new productModel({deptName:"commerce",ename:"khalid"})
+//  let result=await data.save()
+//  console.log(result)
+
+// }
+// main()
+
+// ===CRUD--WITH--MONGOOSE===
+
+// const mongoose=require("mongoose") 
+//   mongoose.connect("mongodb://localhost:27017/Google")
+
+// const deptSchema=new mongoose.Schema( // define schema
+//   {
+//     deptName:String,
+//     ename:String,
+//     sal:Number
+//   },
+//   {collection:"Dept"}
+// )
+
+// const saveInDb=async ()=>{  //  SAVE IN DB
+
+// const deptModel=mongoose.model('Dept',deptSchema)
+// const  data=new deptModel({
+//   deptName:"Datascince",
+//   ename:"Mubashir",
+//   sal:10000
+// })
+// let result=await data.save()
+// console.log(result)
+// }
+
+// const updateInDb=async ()=>{ //UPDATE IN DB
+//  const deptModel= mongoose.model("Dept",deptSchema)
+//  const data=await deptModel.updateOne(
+//   {ename:"shafiqa"},
+//   {
+//     $set:{ename:"shafiqa iqbal",sal:50000}
+// }
+//  )
+//  console.log(data)
+
+// }
+
+// const deleteInDB=async()=>{ //delete in db
+//   const deptModel=mongoose.model("Dept",deptSchema)
+//   const data=await deptModel.deleteMany({ename:"hasmi"})
+//   console.log(data)
+// }
+
+// const findInDb=async()=>{
+//   const deptModel=mongoose.model("Dept",deptSchema)
+//   const result=await deptModel.find({ename:"Maaz"})
+//   console.log(result)
+
+// }
+// findInDb()
+
+ 
+// POST API WITH MONGOOSE
+const express=require("express")
+require("./config")
+const deptModel=require("./dept")
+
+const app=express()
+app.use(express.json())
+
+app.post("/",async (req,resp)=>{
+  let data=new deptModel(req.body)
+  let result=await data.save()
+  console.log(result)
+  resp.send(result)
+})
+app.listen(4000)

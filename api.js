@@ -47,8 +47,8 @@
 
 // app.listen(400)
 
-//practice
 
+//practice
 //make user API
 const express=require("express")
 const dbConect=require("./mongodb")
